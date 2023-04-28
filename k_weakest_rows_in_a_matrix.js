@@ -34,3 +34,30 @@ var kWeakestRows = function (mat, k) {
 };
 
 // output: [2,0,3]
+
+// leet Solution
+
+/**
+ 
+var kWeakestRows = function (mat, k) {
+	//Step 1:
+	let freqMap = {};
+	for (let i = 0; i < mat.length; i++) {
+		// Step 2:
+		let count = mat[i].lastIndexOf(1) + 1;
+		// Step 3:
+		if (freqMap[count] !== undefined) {
+			freqMap[count] = [...freqMap[count], i];
+		} else {
+			freqMap[count] = [i];
+		}
+	}
+	// Step 4 & 5
+	return Object.values(freqMap)
+		.reduce((arr, itm) => {
+			arr = [...arr, ...itm];
+			return arr;
+		}, [])
+		.slice(0, k);
+};
+ */
